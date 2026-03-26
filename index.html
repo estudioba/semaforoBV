@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Semáforo Fiscal</title>
+<style>
+body { font-family: Arial; max-width: 600px; margin: auto; }
+.result { font-size: 24px; margin-top: 20px; font-weight: bold; }
+</style>
+</head>
+<body>
+
+<h2>Chequeo Fiscal - Estudio Contable</h2>
+
+<form id="form">
+
+<p>1. ¿Estás inscripto?</p>
+<select name="q1">
+<option value="0">Sí</option>
+<option value="2">No</option>
+</select>
+
+<p>2. ¿Tus movimientos coinciden con lo facturado?</p>
+<select name="q2">
+<option value="0">Sí</option>
+<option value="1">Más o menos</option>
+<option value="2">No</option>
+</select>
+
+<p>3. ¿Usás billeteras sin facturar?</p>
+<select name="q3">
+<option value="0">No</option>
+<option value="1">A veces</option>
+<option value="2">Sí</option>
+</select>
+
+<p>4. ¿Declarás cripto?</p>
+<select name="q4">
+<option value="0">Sí</option>
+<option value="1">No sabía</option>
+<option value="2">No</option>
+</select>
+
+<p>5. ¿Recibiste inspecciones?</p>
+<select name="q5">
+<option value="0">No</option>
+<option value="1">Leve</option>
+<option value="2">Importante</option>
+</select>
+
+<br><br>
+<button type="button" onclick="calcular()">Ver resultado</button>
+
+</form>
+
+<div class="result" id="resultado"></div>
+
+<script>
+function calcular() {
+  let total = 0;
+  const form = document.forms["form"];
+  for (let i = 0; i < form.length; i++) {
+    total += parseInt(form[i].value);
+  }
+
+  let resultado = "";
+  if (total <= 3) {
+    resultado = "?? Riesgo Bajo";
+  } else if (total <= 7) {
+    resultado = "?? Riesgo Medio";
+  } else {
+    resultado = "?? Riesgo Alto";
+  }
+
+  document.getElementById("resultado").innerText = resultado;
+}
+</script>
+
+</body>
+</html>
